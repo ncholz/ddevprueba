@@ -1,0 +1,9 @@
+# Ignorar los archivos de conexión a la base de datos (cada uno tendrá el suyo localmente)
+wp-config-local.php
+
+# Ignorar las carpetas de subidas para no saturar el repositorio con imágenes
+wp-content/uploads/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
