@@ -6,4 +6,4 @@ wp-content/uploads/
 
 # Archivos del sistema operativo
 .DS_Store
-Thumbs.db
+Thumbs.db.ddev/traefik/
