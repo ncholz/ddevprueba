@@ -1,0 +1,198 @@
++ set -eu -o pipefail
++ logpipe=/var/tmp/logpipe
++ [[ ! -p /var/tmp/logpipe ]]
++ mkfifo /var/tmp/logpipe
++ trap 'trap - SIGTERM && kill -- -1' SIGINT SIGTERM EXIT SIGHUP SIGQUIT
++ cat
++ set -o errexit nounset pipefail
++ rm -f /tmp/healthy
++ pkill -0 supervisord
++ rm -f /var/run/supervisor.sock
++ export DDEV_WEB_ENTRYPOINT=/mnt/ddev_config/web-entrypoint.d
++ DDEV_WEB_ENTRYPOINT=/mnt/ddev_config/web-entrypoint.d
++ source /functions.sh
++ '[' '!' -f /home/brandcode/.gitconfig ']'
++ DDEV_PHP_VERSION=8.4
++ DDEV_WEBSERVER_TYPE=nginx-fpm
++ '[' -n 8.4 ']'
++ update-alternatives --set php /usr/bin/php8.4
++ ln -sf /usr/sbin/php-fpm8.4 /usr/sbin/php-fpm
++ export PHP_INI=/etc/php/8.4/fpm/php.ini
++ PHP_INI=/etc/php/8.4/fpm/php.ini
++ '[' '!' -z Europe/Madrid ']'
+++ find /etc/php -name php.ini
++ perl -pi -e 's%date.timezone *=.*$%date.timezone = Europe/Madrid%g' /etc/php/5.6/cli/php.ini /etc/php/5.6/fpm/php.ini /etc/php/7.4/cli/php.ini /etc/php/7.4/fpm/php.ini /etc/php/7.0/cli/php.ini /etc/php/7.0/fpm/php.ini /etc/php/8.4/cli/php.ini /etc/php/8.4/fpm/php.ini /etc/php/8.2/cli/php.ini /etc/php/8.2/fpm/php.ini /etc/php/8.5/cli/php.ini /etc/php/8.5/fpm/php.ini /etc/php/7.1/cli/php.ini /etc/php/7.1/fpm/php.ini /etc/php/8.1/cli/php.ini /etc/php/8.1/fpm/php.ini /etc/php/8.0/cli/php.ini /etc/php/8.0/fpm/php.ini /etc/php/7.2/cli/php.ini /etc/php/7.2/fpm/php.ini /etc/php/7.3/cli/php.ini /etc/php/7.3/fpm/php.ini /etc/php/8.3/cli/php.ini /etc/php/8.3/fpm/php.ini
++ '[' -d /mnt/ddev_config/php ']'
+++ ls -A '/mnt/ddev_config/php/*.ini'
++ '[' -n '' ']'
++ '[' -d /mnt/ddev_config/nginx_full ']'
++ rm -rf /etc/nginx/sites-enabled
++ cp -r /mnt/ddev_config/nginx_full /etc/nginx/sites-enabled/
++ '[' -d /mnt/ddev_config/apache ']'
++ rm -rf /etc/apache2/sites-enabled
++ cp -r /mnt/ddev_config/apache /etc/apache2/sites-enabled
++ '[' wordpress = backdrop ']'
++ '[' wordpress = drupal6 ']'
++ '[' wordpress = drupal7 ']'
++ '[' wordpress = backdrop ']'
+++ id -un
+++ id -gn
++ printf '\nexport APACHE_RUN_USER=brandcode\nexport APACHE_RUN_GROUP=brandcode\n'
++ a2enmod access_compat alias auth_basic authn_core authn_file authz_core authz_host authz_user autoindex deflate dir env filter mime mpm_event negotiation reqtimeout rewrite setenvif status
+Considering dependency authn_core for access_compat:
+Module authn_core already enabled
+Module access_compat already enabled
+Module alias already enabled
+Considering dependency authn_core for auth_basic:
+Module authn_core already enabled
+Module auth_basic already enabled
+Module authn_core already enabled
+Module authn_file already enabled
+Module authz_core already enabled
+Considering dependency authz_core for authz_host:
+Module authz_core already enabled
+Module authz_host already enabled
+Considering dependency authz_core for authz_user:
+Module authz_core already enabled
+Module authz_user already enabled
+Module autoindex already enabled
+Considering dependency filter for deflate:
+Module filter already enabled
+Module deflate already enabled
+Module dir already enabled
+Module env already enabled
+Module filter already enabled
+Module mime already enabled
+Considering conflict mpm_worker for mpm_event:
+Considering conflict mpm_prefork for mpm_event:
+Enabling module mpm_event.
+Module negotiation already enabled
+Module reqtimeout already enabled
+Enabling module rewrite.
+Module setenvif already enabled
+Module status already enabled
+To activate the new configuration, you need to run:
+  service apache2 restart
++ a2enconf charset localized-error-pages other-vhosts-access-log security serve-cgi-bin
+Conf charset already enabled
+Conf localized-error-pages already enabled
+Conf other-vhosts-access-log already enabled
+Conf security already enabled
+Conf serve-cgi-bin already enabled
++ '[' nginx-fpm = apache-fpm ']'
++ '[' false = true ']'
++ disable_xdebug
+Disabled xdebug
++ phpenmod assert
++ ls /var/www/html
++ sudo mkdir -p /mnt/ddev-global-cache/terminus/cache
++ sudo mkdir -p /mnt/ddev-global-cache/bashhistory/proyecto-ddev-web /mnt/ddev-global-cache/mysqlhistory/proyecto-ddev-web /mnt/ddev-global-cache/n_prefix/proyecto-ddev-web /mnt/ddev-global-cache/npm /mnt/ddev-global-cache/yarn/classic /mnt/ddev-global-cache/yarn/berry /mnt/ddev-global-cache/corepack
+++ id -u
+++ id -g
++ sudo chown -R 1000:1000 /mnt/ddev-global-cache/ /var/lib/php
++ '[' '' '!=' '' ']'
++ cd /home/brandcode
++ yarn config set cache-folder /mnt/ddev-global-cache/yarn/classic
++ mkdir -p /home/brandcode/.yarn/berry
++ ln -sf /mnt/ddev-global-cache/yarn/berry /home/brandcode/.yarn/berry/cache
++ '[' -d /mnt/ddev_config/.homeadditions ']'
++ cp -r /mnt/ddev_config/.homeadditions/. /home/brandcode/
++ '[' '!' -f /mnt/ddev-global-cache/mkcert/rootCA.pem ']'
++ mkcert -install
+The local CA is now installed in the system trust store! ⚡️
+
++ CAROOT=/mnt/ddev-global-cache/mkcert
++ mkcert -cert-file /etc/ssl/certs/master.crt -key-file /etc/ssl/certs/master.key proyecto-ddev.ddev.site localhost 127.0.0.1 127.0.0.1 web ddev-proyecto-ddev-web ddev-proyecto-ddev-web.ddev
+
+Created a new certificate valid for the following names 📜
+ - "proyecto-ddev.ddev.site"
+ - "localhost"
+ - "127.0.0.1"
+ - "127.0.0.1"
+ - "web"
+ - "ddev-proyecto-ddev-web"
+ - "ddev-proyecto-ddev-web.ddev"
+
+The certificate is at "/etc/ssl/certs/master.crt" and the key at "/etc/ssl/certs/master.key" ✅
+
+It will expire on 7 July 2028 🗓
+
++ echo 'Server started'
+Server started
++ unset PHP_IDE_CONFIG
++ ddev_custom_init_scripts
++ echo 'Loading custom entrypoint config from /mnt/ddev_config/web-entrypoint.d'
+Loading custom entrypoint config from /mnt/ddev_config/web-entrypoint.d
++ ls '/mnt/ddev_config/web-entrypoint.d/*.sh'
++ logpipe=/var/tmp/logpipe
++ [[ ! -p /var/tmp/logpipe ]]
++ exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord-nginx-fpm.conf
+2026-04-07 13:55:08,989 INFO Included extra file "/etc/supervisor/php-fpm.conf" during parsing
+2026-04-07 13:55:08,989 INFO Included extra file "/etc/supervisor/conf.d/mailpit.conf" during parsing
+2026-04-07 13:55:08,989 INFO Included extra file "/etc/supervisor/conf.d/supervisor.conf" during parsing
+2026-04-07 13:55:08,993 INFO RPC interface 'supervisor' initialized
+2026-04-07 13:55:08,993 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2026-04-07 13:55:08,993 INFO supervisord started with pid 20
+2026-04-07 13:55:09,988 INFO spawned: 'php-fpm' with pid 1598
+2026-04-07 13:55:09,989 INFO spawned: 'nginx' with pid 1599
+2026-04-07 13:55:09,992 INFO spawned: 'mailpit' with pid 1600
+[07-Apr-2026 13:55:10] NOTICE: fpm is running, pid 1598
+[07-Apr-2026 13:55:10] NOTICE: ready to handle connections
+[07-Apr-2026 13:55:10] NOTICE: systemd monitor interval set to 10000ms
+2026-04-07 13:55:11,235 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2026-04-07 13:55:11,235 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2026-04-07 13:55:11,235 INFO success: mailpit entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+[07-Apr-2026 14:00:15] NOTICE: Reloading in progress ...
+[07-Apr-2026 14:00:15] NOTICE: reloading: execvp("/usr/sbin/php-fpm", {"/usr/sbin/php-fpm", "--nodaemonize", "--force-stderr", "--allow-to-run-as-root"})
+[07-Apr-2026 14:00:17] NOTICE: using inherited socket fd=8, "/run/php-fpm.sock"
+[07-Apr-2026 14:00:17] NOTICE: fpm is running, pid 1598
+[07-Apr-2026 14:00:17] NOTICE: ready to handle connections
+[07-Apr-2026 14:00:17] NOTICE: systemd monitor interval set to 10000ms
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 83.173.144.19:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 83.173.144.19:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:07:05 [error] 1606#1606: *25 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 83.173.144.19:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.19.0.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "sixthly-indusial-elvis.ngrok-free.dev"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:07:05 [error] 1606#1606: *29 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775563625.3314509391784667968750 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:07:11 [error] 1606#1606: *27 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 83.173.144.19:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.19.0.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "sixthly-indusial-elvis.ngrok-free.dev"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:07:11 [error] 1606#1606: *31 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775563631.0996229648590087890625 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:08:41 [error] 1606#1606: *38 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775563721.0372569561004638671875 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:10:12 [error] 1606#1606: *44 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:10:13 [error] 1606#1606: *47 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775563812.7780070304870605468750 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:10:13 [error] 1606#1606: *42 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:10:19 [error] 1606#1606: *44 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "GET /wp-login.php?interim-login=1&wp_lang=es_ES HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:10:23 [info] 1608#1608: *51 epoll_wait() reported that client prematurely closed connection, so upstream connection is closed too while sending request to upstream, client: 172.18.0.5, server: , request: "GET /wp-login.php?interim-login=1&wp_lang=es_ES HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:12:10 [error] 1607#1607: *57 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:12:11 [error] 1607#1607: *57 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775563930.9115579128265380859375 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:12:11 [error] 1606#1606: *56 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:14:12 [error] 1607#1607: *66 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:14:12 [error] 1607#1607: *66 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775564052.3684899806976318359375 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:14:12 [error] 1607#1607: *65 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:16:13 [error] 1608#1608: *75 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:16:13 [error] 1608#1608: *75 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775564173.3223218917846679687500 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:16:13 [error] 1607#1607: *74 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:18:17 [error] 1607#1607: *83 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/edit.php?post_type=product"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:18:17 [error] 1607#1607: *83 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775564297.3081049919128417968750 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:18:17 [error] 1607#1607: *84 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+NOTICE: PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+2026/04/07 14:20:24 [error] 1607#1607: *96 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.4:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-cron.php?doing_wp_cron=1775564423.9777889251708984375000 HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site"
+2026/04/07 14:20:24 [error] 1607#1607: *92 FastCGI sent in stderr: "PHP message: Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 172.18.0.1:9003 (from HTTP_X_FORWARDED_FOR HTTP header), host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port)" while reading response header from upstream, client: 172.18.0.5, server: , request: "POST /wp-admin/admin-ajax.php HTTP/1.1", upstream: "fastcgi://unix:/run/php-fpm.sock:", host: "proyecto-ddev.ddev.site", referrer: "https://proyecto-ddev.ddev.site/wp-admin/plugins.php"
