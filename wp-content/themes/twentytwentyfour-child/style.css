@@ -1,0 +1,15 @@
+/*
+Theme Name: Twenty Twenty-Four Child
+Template: twentytwentyfour
+Version: 1.0
+*/
+
+/* TU CSS DESDE AQUÍ */
+
+h1 {
+    color: white;
+  }
+
+  body {
+    background: black;
+}
